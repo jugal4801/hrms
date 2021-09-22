@@ -111,8 +111,10 @@ import Pages404 from "../pages/Utility/pages-404"
 import Pages500 from "../pages/Utility/pages-500"
 import PagesGallery from "../pages/Utility/PagesGallery";
 import PagesDirectory from "../pages/Utility/PagesDirectory";
+import Report from '../pages/Dashboard/Report'
 
 const userRoutes = [
+  // { path: "/dashboard", component: (() => <Dashboard authorized={false} />) },
   { path: "/dashboard", component: Dashboard },
 
   // //calendar
@@ -229,6 +231,8 @@ const authRoutes = [
   { path: "/auth-email-verification-2", component: EmailVerification2 },
   { path: "/auth-two-step-verification", component: TwostepVerification },
   { path: "/auth-two-step-verification-2", component: TwostepVerification2 },
+{path:"/Report" , component: Report}
+
 ]
 
 export { userRoutes, authRoutes }

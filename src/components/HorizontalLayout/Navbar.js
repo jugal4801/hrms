@@ -88,7 +88,7 @@ const Navbar = props => {
                   </Link>
 
                 </li>
-
+{/* 
                 <li className="nav-item dropdown mega-dropdown">
                   <Link
                     to="/#"
@@ -185,9 +185,9 @@ const Navbar = props => {
                       </Col>
                     </Row>
                   </div>
-                </li>
+                </li> */}
 
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <Link
                     to="/#"
                     className="nav-link dropdown-toggle arrow-none"
@@ -536,7 +536,7 @@ const Navbar = props => {
                       {props.t("Billing Email")}
                     </Link>
                   </div>
-                </li>
+                </li> */}
 
               </ul>
             </Collapse>

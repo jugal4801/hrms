@@ -16,6 +16,7 @@ import {
 } from "reactstrap"
 import { Link } from "react-router-dom"
 
+import { useHistory } from 'react-router';
 // Custom Scrollbar
 import SimpleBar from "simplebar-react";
 
@@ -44,12 +45,17 @@ import "chartist/dist/scss/chartist.scss";
 
 //i18n
 import { withTranslation } from "react-i18next"
+import { use } from 'echarts';
 
-const Dashboard = props => {
+const Dashboard = ({authorized}) => {
   const [menu, setMenu] = useState(false)
   const toggle = () => {
     setMenu(!menu)
   }
+  // const navigate = useHistory()
+  // if(!authorized){
+  //   return navigate.push("/login")
+  // }
   return (
     <React.Fragment>
       <div className="page-content">
@@ -66,7 +72,7 @@ const Dashboard = props => {
                 </ol>
               </Col>
 
-              <Col md="4">
+              {/* <Col md="4">
                 <div className="float-end d-none d-md-block">
                   <Dropdown isOpen={menu} toggle={toggle}>
                     <DropdownToggle color="primary" className="btn btn-primary dropdown-toggle waves-effect waves-light">
@@ -81,7 +87,7 @@ const Dashboard = props => {
                     </DropdownMenu>
                   </Dropdown>
                 </div>
-              </Col>
+              </Col> */}
             </Row>
           </div>
           <Row>
@@ -93,28 +99,28 @@ const Dashboard = props => {
                       <img src={servicesIcon1} alt="" />
                     </div>
                     <h5 className="font-size-16 text-uppercase mt-0 text-white-50">
-                      Orders
+                     Total Employee
                     </h5>
                     <h4 className="fw-medium font-size-24">
-                      1,685{" "}
+                      50+{" "}
                       <i className="mdi mdi-arrow-up text-success ms-2"></i>
                     </h4>
-                    <div className="mini-stat-label bg-success">
+                    {/* <div className="mini-stat-label bg-success">
                       <p className="mb-0">+ 12%</p>
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="pt-2">
+                  {/* <div className="pt-2">
                     <div className="float-end">
                       <Link to="#" className="text-white-50">
                         <i className="mdi mdi-arrow-right h5"></i>
                       </Link>
                     </div>
                     <p className="text-white-50 mb-0 mt-1">Since last month</p>
-                  </div>
+                  </div> */}
                 </CardBody>
               </Card>
             </Col>
-            <Col xl={3} md={6}>
+            {/* <Col xl={3} md={6}>
               <Card className="mini-stat bg-primary text-white">
                 <CardBody>
                   <div className="mb-4">
@@ -143,8 +149,8 @@ const Dashboard = props => {
                   </div>
                 </CardBody>
               </Card>
-            </Col>
-            <Col xl={3} md={6}>
+            </Col> */}
+            {/* <Col xl={3} md={6}>
               <Card className="mini-stat bg-primary text-white">
                 <CardBody>
                   <div className="mb-4">
@@ -202,9 +208,9 @@ const Dashboard = props => {
                   </div>
                 </CardBody>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
-
+{/* 
           <Row>
             <Col xl={9}>
               <Card>
@@ -478,29 +484,29 @@ const Dashboard = props => {
                 </Col>
               </Row>
             </Col>
-          </Row>
+          </Row> */}
 
           <Row>
-            <Col xl={8}>
+            <Col xl={12}>
               <Card>
                 <CardBody>
-                  <h4 className="card-title mb-4">Latest Transaction</h4>
+                  <h4 className="card-title text-center justify-content-center mb-4">Employe Detail</h4>
                   <div className="table-responsive">
                     <table className="table table-hover table-centered table-nowrap mb-0">
                       <thead>
                         <tr>
-                          <th scope="col">(#) Id</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Amount</th>
+                          {/* <th scope="col">(#) Id</th> */}
+                          <th scope="col">Employe Name</th>
+                          <th scope="col">Designation</th>
+                          {/* <th scope="col">Amount</th> */}
                           <th scope="col" colSpan="2">
-                            Status
+                            Open Report
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">#14256</th>
+                          {/* <th scope="row">#14256</th> */}
                           <td>
                             <div>
                               <img
@@ -508,26 +514,26 @@ const Dashboard = props => {
                                 alt=""
                                 className="avatar-xs rounded-circle me-2"
                               />{" "}
-                              Philip Smead
+                              Dhaval Panchal
                             </div>
                           </td>
-                          <td>15/1/2018</td>
-                          <td>$94</td>
+                          {/* <td>15/1/2018</td>
+                          <td>$94</td> */}
                           <td>
                             <span className="badge bg-success">
-                              Delivered
+                              BDE
                             </span>
                           </td>
                           <td>
                             <div>
-                              <Link to="#" className="btn btn-primary btn-sm">
-                                Edit
+                              <Link to="/Report" className="btn btn-primary btn-sm">
+                                Open
                               </Link>
                             </div>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">#14257</th>
+                          {/* <th scope="row">#14257</th> */}
                           <td>
                             <div>
                               <img
@@ -535,24 +541,24 @@ const Dashboard = props => {
                                 alt=""
                                 className="avatar-xs rounded-circle me-2"
                               />{" "}
-                              Brent Shipley
+                             Sooraj Panchal
                             </div>
                           </td>
-                          <td>16/1/2019</td>
-                          <td>$112</td>
+                          {/* <td>16/1/2019</td>
+                          <td>$112</td> */}
                           <td>
-                            <span className="badge bg-warning">Pending</span>
+                            <span className="badge bg-warning">React Native</span>
                           </td>
                           <td>
                             <div>
-                              <Link to="#" className="btn btn-primary btn-sm">
-                                Edit
+                              <Link to="/Report" className="btn btn-primary btn-sm">
+                               Open
                               </Link>
                             </div>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">#14258</th>
+                          {/* <th scope="row">#14258</th> */}
                           <td>
                             <div>
                               <img
@@ -560,25 +566,25 @@ const Dashboard = props => {
                                 alt=""
                                 className="avatar-xs rounded-circle me-2"
                               />{" "}
-                              Robert Sitton
+                              Nikhil
                             </div>
                           </td>
-                          <td>17/1/2019</td>
-                          <td>$116</td>
+                          {/* <td>17/1/2019</td>
+                          <td>$116</td> */}
                           <td>
                             <span className="badge bg-success">
-                              Delivered
+                             NodeJs
                             </span>
                           </td>
                           <td>
                             <div>
-                              <Link to="#" className="btn btn-primary btn-sm">
-                                Edit
+                              <Link to="/Report" className="btn btn-primary btn-sm">
+                                Open
                               </Link>
                             </div>
                           </td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                           <th scope="row">#14259</th>
                           <td>
                             <div>
@@ -650,18 +656,18 @@ const Dashboard = props => {
                           <td>
                             <div>
                               <Link to="#" className="btn btn-primary btn-sm">
-                                Edit
+                               Open Report
                               </Link>
                             </div>
                           </td>
-                        </tr>
+                        </tr> */}
                       </tbody>
                     </table>
                   </div>
                 </CardBody>
               </Card>
             </Col>
-            <Col xl={4}>
+            {/* <Col xl={4}>
               <Card>
                 <CardBody>
                   <h4 className="card-title mb-4">Chat</h4>
@@ -792,7 +798,7 @@ const Dashboard = props => {
                   </div>
                 </CardBody>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </div>

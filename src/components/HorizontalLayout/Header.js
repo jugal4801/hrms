@@ -22,7 +22,7 @@ import { withTranslation } from "react-i18next"
 import logodarkImg from "../../assets/images/logo-dark.png";
 import logosmImg from "../../assets/images/logo-sm.png";
 import logolightImg from "../../assets/images/logo-light.png";
-
+//  const logo = require("../../assets/images/logo-sm.png")
 const Header = props => {
 
   function toggleFullscreen() {
@@ -60,24 +60,25 @@ const Header = props => {
           <div className="d-flex">
             <div className="navbar-brand-box">
               <Link to="/dashboard" className="logo logo-dark">
-                <span className="logo-sm">
-                  <img src={logosmImg} alt="" height="22" />
+                <span className="logo">
+                  <img src={logosmImg} alt="" height="34" width="100" />
                 </span>
-                <span className="logo-lg">
+                {/* <span className="logo-lg">
                   <img src={logodarkImg} alt="" height="17" />
-                </span>
+                </span> */}
               </Link>
 
-              <Link to="/dashboard" className="logo logo-light">
-                <span className="logo-sm">
+              {/* <Link to="/dashboard" className="logo ">
+                <span className="logo">
                   <img src={logosmImg} alt="" height="22" />
+                 
                 </span>
-                <span className="logo-lg">
+                {/* <span className="logo-lg">
                   <img src={logolightImg} alt="" height="18" />
-                </span>
-              </Link>
+                </span> 
+              </Link> */}
               </div>
-              <button
+              {/* <button
                 type="button"
                 onClick={() => {
                   props.toggleLeftmenu(!props.leftMenu)
@@ -86,9 +87,9 @@ const Header = props => {
                 id="vertical-menu-btn"
               >
                 <i className="mdi mdi-menu"></i>
-              </button>
+              </button> */}
               </div>
-            <div className="d-flex">
+            {/* <div className="d-flex">
             <form className="app-search d-none d-lg-block">
                 <div className="position-relative">
                     <input type="text" className="form-control" placeholder="Search..." />
@@ -103,9 +104,9 @@ const Header = props => {
                     <i className="mdi mdi-fullscreen"></i>
                 </button>
             </div>
-            <NotificationDropdown />      
+            <NotificationDropdown />  */}    
             <ProfileMenu />        
-            <div className="dropdown d-inline-block">
+            {/* <div className="dropdown d-inline-block">
                 <button
                   onClick={() => {
                     props.showRightSidebarAction(!props.showRightSidebar)
@@ -116,7 +117,8 @@ const Header = props => {
                   <i className="mdi mdi-cog-outline"></i>
                 </button>
               </div>
-            </div>
+            </div>  */}
+          
           </div>
       </header>
     </React.Fragment>

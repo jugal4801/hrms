@@ -1,8 +1,9 @@
-import PropTypes from "prop-types"
+ import PropTypes from "prop-types"
 import React, { useState, useEffect } from "react"
 import MetaTags from "react-meta-tags"
 import "react-toastify/dist/ReactToastify.min.css"
-// import { Alert } from "reactstrap"
+
+import { useHistory } from "react-router"
 
 // material ui
 import CircularProgress from "@material-ui/core/CircularProgress"
@@ -53,6 +54,7 @@ const Register = props => {
     props.apiError("")
   }, [])
 
+  const navigate = useHistory()
   // yup validation
   const RegistrationSchema = yup.object().shape({
     userName: yup
@@ -94,26 +96,34 @@ const Register = props => {
         designation: values.designation,
       }
       toast.success("Sign up successfully")
+      // localStorage.setItem("username",userName)
       resetForm()
       return user
     },
   })
 
   // handleValidSubmit
-  // const handleValidSubmit = (event, values) => {
-  //   console.log(event);
-  //   props.loginUser(values, props.history)
+  const handleValidSubmit = (event, values) => {
+    console.log(event);
+    props.loginUser(values, props.history)
+  }
+  // const  handleSubmit =e => {
+  //   e.preventDefault();
+  //   const data={
+  //   user_Name:UserName,
+  //   password:UserPassword,
+  //   }
+  //   console.log(data);
   // }
-
   const {
     errors,
     touched,
     resetForm,
-    handleSubmit,
+     handleSubmit,
     isSubmitting,
     getFieldProps,
   } = formik
-
+ 
   const containerStyle = {
     padding: "30px 20px",
     width: 400,
@@ -149,21 +159,9 @@ const Register = props => {
               <CardContent className="p-4">
                 <div className="p-3">
                   <FormikProvider value={formik} className="mt-4">
-                    <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-                      {/* {props.user && props.user ? (
-                        <Alert color="success">
-                          Register User Successfully
-                        </Alert>
-                      ) : null}
-
-                      {props.registrationError &&
-                        props.registrationError ? (
-                          <Alert color="danger">
-                          {props.registrationError}
-                          </Alert>
-                        ) : null} */}
-
+                    <Form autoComplete="off" noValidate onSubmit={handleSubmit } >
                       <TextField
+                        required
                         fullWidth
                         autoComplete="userName"
                         className="mb-3"
@@ -171,11 +169,13 @@ const Register = props => {
                         name="username"
                         label="UserName"
                         type="text"
+                        onChange={e=>UserName=e.target.value}
                         {...getFieldProps("userName")}
                         error={Boolean(touched.userName && errors.userName)}
                         helperText={touched.userName && errors.userName}
                       />
                       <TextField
+                        required
                         fullWidth
                         autoComplete="userEmail"
                         className="mb-3"
@@ -183,12 +183,14 @@ const Register = props => {
                         name="email"
                         label="Email"
                         type="email"
+                        onChange={e=>UserEmail=e.target.value}
                         {...getFieldProps("userEmail")}
                         error={Boolean(touched.userEmail && errors.userEmail)}
                         helperText={touched.userEmail && errors.userEmail}
                       />
 
                       <TextField
+                        required
                         fullWidth
                         autoComplete="designation"
                         className="mb-3"
@@ -196,6 +198,7 @@ const Register = props => {
                         name="designation"
                         label="Designation"
                         type="text"
+                        onChange={e=>UserDesignation=e.target.value}
                         {...getFieldProps("designation")}
                         error={Boolean(
                           touched.designation && errors.designation
@@ -204,6 +207,7 @@ const Register = props => {
                       />
 
                       <TextField
+                        required
                         fullWidth
                         autoComplete="phone"
                         className="mb-3"
@@ -211,11 +215,13 @@ const Register = props => {
                         name="phone"
                         label="Phone"
                         type="text"
+                        onChange={e=>UserPhone=e.target.value}
                         {...getFieldProps("phone")}
                         error={Boolean(touched.phone && errors.phone)}
                         helperText={touched.phone && errors.phone}
                       />
                       <TextField
+                        required
                         fullWidth
                         className="mb-3"
                         autoComplete="password"
@@ -238,6 +244,7 @@ const Register = props => {
                             </InputAdornment>
                           ),
                         }}
+                        onChange={e=>UserPassword=e.target.value}
                         {...getFieldProps("password")}
                         error={Boolean(touched.password && errors.password)}
                         helperText={touched.password && errors.password}
@@ -249,10 +256,12 @@ const Register = props => {
                         color="primary"
                         variant="contained"
                         className="mt-2"
+                        // onClick={()=>{handleValidSubmit(values)}}
+                        // onClick={() => {navigate.push("/dashboard")}}
                       >
-                        {isSubmitting ? (
+                        {/* {isSubmitting ? (
                           <CircularProgress color="inherit" size={20} />
-                        ) : null}
+                        ) : null} */}
                         Sign In
                       </Button>
 
@@ -273,11 +282,10 @@ const Register = props => {
             </Card>
             <div className="mt-5 text-center">
               <p>
-                Already have an account ?{" "}
+                Already have an account ?
                 <Link to="/login" className="fw-medium text-primary">
-                  {" "}
                   Sign In
-                </Link>{" "}
+                </Link>
               </p>
               {/* <p>
                 © {new Date().getFullYear()} Veltrix. Crafted with{" "}
