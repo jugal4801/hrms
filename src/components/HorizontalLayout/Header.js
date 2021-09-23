@@ -55,8 +55,8 @@ const Header = props => {
 
   return (
     <React.Fragment>
-      <header id="page-topbar">
-        <div className="navbar-header">
+      <header id="page-topbar" style={{backgroundColor:'#451952' }}>
+        <div className="navbar-header" >
           <div className="d-flex">
             <div className="navbar-brand-box">
               <Link to="/dashboard" className="logo logo-dark">

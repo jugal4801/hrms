@@ -193,23 +193,23 @@ const Calender = props => {
           <Row>
             <Col className="col-12">
               <Row>
-                <Col lg={3}>
+                <Col lg={1} className="d-none ">
                   <Card>
                     <CardBody>
                       <div className="d-grid">
-                        <Button
+                        {/* <Button
                           color="primary"
                           className="font-16 btn-block"
                           onClick={toggleCategory}
                         >
                           <i className="mdi mdi-plus-circle-outline"></i> Create New Event
-                      </Button>
+                      </Button> */}
                       </div>
                       <div id="external-events" className="m-t-20">
                         <br />
-                        <p className="text-muted">
+                        {/* <p className="text-muted">
                           Drag and drop your event or click in the calendar
-                        </p>
+                        </p> */}
                         {categories &&
                           categories.map((category, i) => (
                             <div
@@ -218,12 +218,12 @@ const Calender = props => {
                               draggable
                               onDrag={event => onDrag(event, category)}
                             >
-                              <i className="mdi mdi-checkbox-blank-circle font-size-11 me-2" />
-                              {category.title}
+                              {/* <i className="mdi mdi-checkbox-blank-circle font-size-11 me-2" /> */}
+                              {/* {category.title} */}
                             </div>
                           ))}
                       </div>
-                      <div className="mt-5">
+                      {/* <div className="mt-5">
                         <h4 className="card-title mb-3">Activity</h4>
 
                         <ol className="activity-feed mb-0 ps-2 ms-1" >
@@ -238,11 +238,12 @@ const Calender = props => {
                             <p className="mb-0">Zack Wetass, Chris combined Commented UX Murphy</p>
                           </li>
                         </ol>
-                      </div>
+                      </div> */}
                     </CardBody>
                   </Card>
                 </Col>
-                <Col lg={9}>
+                
+                <Col lg={12}>
                   <div className="card">
                     <div className="card-body">
                       <FullCalendar
@@ -259,9 +260,9 @@ const Calender = props => {
                           center: "title",
                           right: "dayGridMonth,dayGridWeek,dayGridDay",
                         }}
-                        events={events}
-                        editable={true}
-                        droppable={true}
+                        // events={events}
+                        // editable={true}
+                        // droppable={true}
                         selectable={true}
                         dateClick={handleDateClick}
                         eventClick={handleEventClick}
